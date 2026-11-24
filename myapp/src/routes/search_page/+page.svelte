@@ -7,11 +7,12 @@
           image_preview = URL.createObjectURL(img);
      };
 
+     let { form } = $props();
 </script>
 
 <div class="upload">
      
-     <form method="POST" enctype="multipart/form-data" id="image_upload">
+     <form method="POST" action="?/upload" enctype="multipart/form-data" id="image_upload">
           <input type="file" name="uploaded_image" accept="image/*" id="selected_image" onchange={upload_preview} required />
                {#if image_preview}
                <img src={image_preview} alt=""/>
@@ -22,4 +23,8 @@
 
 </div>
 
-
+<div>
+     {#if form?.success}
+          <img src={form.secure_img_URL} alt="uploaded image"/>
+     {/if}
+</div>
